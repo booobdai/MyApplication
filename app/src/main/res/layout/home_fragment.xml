@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/home_scr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="false"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/homecontent_ll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+                <com.youth.banner.Banner
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/home_banner"
+                    android:layout_width="match_parent"
+                    app:indicator_margin="@dimen/dp_size_4dp"
+                    app:indicator_height="@dimen/dp_size_5dp"
+                    app:indicator_width="@dimen/dp_size_5dp"
+                    app:title_textcolor="@color/colorAccent"
+                    app:indicator_drawable_selected="@mipmap/forward"
+                    app:indicator_drawable_unselected="@mipmap/defenders"
+                    android:layout_height="200dp" />
+          <!--      <com.hejunlin.superindicatorlibray.LoopViewPager
+                    android:id="@+id/home_viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/colorPrimary" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/colorAccent">
+
+                    <com.hejunlin.superindicatorlibray.CircleIndicator
+                        android:id="@+id/home_indicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_marginRight="@dimen/dp_size_15dp"
+                        android:gravity="center"
+                        android:orientation="horizontal" />-->
+
+                <!--</FrameLayout>-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/dp_size_5dp"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/home_laba_im"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="@dimen/dp_size_15dp"
+                    android:paddingTop="5dp"
+                    android:src="@mipmap/ic_launcher" />
+
+                <sportslottery.gooolal.com.sportslotteryforshanghai.ui.view.MarqueeView.MarqueeView
+                    android:id="@+id/homenotice_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:padding="@dimen/dp_size_10dp"
+                    app:intervalTime="5000"
+                    app:orientation="rightToLeft" />
+            </LinearLayout>
+
+
+            <sportslottery.gooolal.com.sportslotteryforshanghai.ui.view.GridViewWithoutScroll
+                android:id="@+id/home_gridview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_size_5dp"
+                android:background="@color/gray"
+                android:horizontalSpacing="1dp"
+                android:numColumns="4"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="1dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:gravity="center"
+                    android:text="竞彩足球"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/sp_size_15sp_T15" />
+
+                <TextView
+                    android:id="@+id/main_total_bisai"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:textColor="@color/black_gray"
+                    android:textSize="@dimen/sp_size_15sp_T15" />
+
+                <TextView
+                    android:id="@+id/main_qici_tv"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@id/main_total_bisai"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/sp_size_15sp_T15" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/home_spf_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/dp_size_10dp"
+                    android:paddingTop="@dimen/dp_size_10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="竞彩胜平负"
+                        android:textColor="@color/colorPrimary" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimary" />
+
+                <LinearLayout
+                    android:id="@+id/home_2x1_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/dp_size_10dp"
+                    android:paddingTop="@dimen/dp_size_10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="竞彩2选1"
+                        android:textColor="@color/colorPrimary" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimary" />
+
+                <LinearLayout
+                    android:id="@+id/home_hhgg_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/dp_size_10dp"
+                    android:paddingTop="@dimen/dp_size_10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="竞彩混合过关"
+                        android:textColor="@color/colorPrimary" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/mtext"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="hello_world"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/sp_size_20sp_T20" />
+</LinearLayout>

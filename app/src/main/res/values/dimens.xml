@@ -1,0 +1,63 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="dividerline_height">1.0px</dimen>
+    <dimen name="dp_size_0_3dp">0.30000007dip</dimen>
+    <dimen name="dp_size_0_5dp">0.5dip</dimen>
+    <dimen name="dp_size_2dp">2.0dip</dimen>
+    <dimen name="dp_size_3dp">3.0dip</dimen>
+    <dimen name="dp_size_4dp">4.0dip</dimen>
+    <dimen name="dp_size_5dp">5.0dip</dimen>
+    <dimen name="dp_size_6dp">6.0dip</dimen>
+    <dimen name="dp_size_8dp">8.0dip</dimen>
+    <dimen name="dp_size_10dp">10.0dip</dimen>
+    <dimen name="dp_size_12dp">12.0dip</dimen>
+    <dimen name="dp_size_14dp">14.0dip</dimen>
+    <dimen name="dp_size_15dp">15.0dip</dimen>
+    <dimen name="dp_size_16dp">16.0dip</dimen>
+    <dimen name="dp_size_18dp">18.0dip</dimen>
+    <dimen name="dp_size_20dp">20.0dip</dimen>
+    <dimen name="dp_size_24dp">24.0dip</dimen>
+    <dimen name="dp_size_26dp">26.0dip</dimen>
+    <dimen name="dp_size_30dp">30.0dip</dimen>
+    <dimen name="dp_size_34dp">34.0dip</dimen>
+    <dimen name="dp_size_35dp">35.0dip</dimen>
+    <dimen name="dp_size_36dp">36.0dip</dimen>
+    <dimen name="dp_size_40dp">40.0dip</dimen>
+    <dimen name="dp_size_44dp">44.0dip</dimen>
+    <dimen name="dp_size_45dp">45.0dip</dimen>
+    <dimen name="dp_size_48dp">48.0dip</dimen>
+    <dimen name="dp_size_50dp">50.0dip</dimen>
+    <dimen name="dp_size_56dp">56.0dip</dimen>
+    <dimen name="dp_size_60dp">60.0dip</dimen>
+    <dimen name="dp_size_80dp">80.0dip</dimen>
+
+
+    <!--textsize-->
+    <dimen name="sp_size_1sp_T1">1.0sp</dimen>
+    <dimen name="sp_size_2sp_T2">2.0sp</dimen>
+    <dimen name="sp_size_3sp_T3">3.0sp</dimen>
+    <dimen name="sp_size_4sp_T4">4.0sp</dimen>
+    <dimen name="sp_size_5sp_T5">5.0sp</dimen>
+    <dimen name="sp_size_6sp_T6">6.0sp</dimen>
+    <dimen name="sp_size_7sp_T7">7.0sp</dimen>
+    <dimen name="sp_size_8sp_T8">8.0sp</dimen>
+    <dimen name="sp_size_9sp_T9">9.0sp</dimen>
+    <dimen name="sp_size_10sp_T10">10.0sp</dimen>
+    <dimen name="sp_size_11sp_T11">11.0sp</dimen>
+    <dimen name="sp_size_12sp_T12">12.0sp</dimen>
+    <dimen name="sp_size_13sp_T13">13.0sp</dimen>
+    <dimen name="sp_size_14sp_T14">14.0sp</dimen>
+    <dimen name="sp_size_15sp_T15">15.0sp</dimen>
+    <dimen name="sp_size_16sp_T16">16.0sp</dimen>
+    <dimen name="sp_size_17sp_T17">17.0sp</dimen>
+    <dimen name="sp_size_18sp_T18">18.0sp</dimen>
+    <dimen name="sp_size_19sp_T19">19.0sp</dimen>
+    <dimen name="sp_size_20sp_T20">20.0sp</dimen>
+    <dimen name="sp_size_21sp_T21">21.0sp</dimen>
+
+    <dimen name="title_height">48.0dip</dimen>
+
+</resources>
