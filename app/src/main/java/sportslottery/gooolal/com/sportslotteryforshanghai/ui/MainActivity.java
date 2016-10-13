@@ -69,6 +69,7 @@ public class MainActivity extends BaseActivity {
             R.mipmap.tab_contact_select, R.mipmap.tab_more_select, R.mipmap.tab_more_select};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
 
+    
     @Override
     protected void initView() {
         setContentView(R.layout.activity_main);
