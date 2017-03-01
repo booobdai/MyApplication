@@ -1,18 +1,12 @@
 package sportslottery.gooolal.com.sportslotteryforshanghai.Base;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
-import java.util.List;
-
-import sportslottery.gooolal.com.sportslotteryforshanghai.ui.widget.LoadingPager;
-import sportslottery.gooolal.com.sportslotteryforshanghai.utils.UIUtils;
-import sportslottery.gooolal.com.sportslotteryforshanghai.utils.ViewUtils;
 /**
  * ================================================
  * 作    者：booob
@@ -25,52 +19,41 @@ import sportslottery.gooolal.com.sportslotteryforshanghai.utils.ViewUtils;
 
 public abstract class BaseFragment extends Fragment {
 
-	private LoadingPager mContentView;
+	protected BaseFragmentActivity mActivity;
+
+	protected abstract void initView(View view, Bundle savedInstanceState);
+
+	//获取布局文件ID
+	protected abstract int getLayoutId();
+
+	//获取宿主Activity
+	protected BaseFragmentActivity getHoldingActivity() {
+		return mActivity;
+	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater,
-							 @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		if (null == mContentView) {
-			mContentView = new LoadingPager(UIUtils.getContext()) {
-
-				@Override
-				protected LoadResult load() {
-					return BaseFragment.this.Load();
-				}
-
-				@Override
-				protected View createLoadedView() {
-					return BaseFragment.this.createLoadedView();
-				}
-			};
-		} else {
-			ViewUtils.removeSelfFromParent(mContentView);
-		}
-		return mContentView;
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		this.mActivity = (BaseFragmentActivity) activity;
 	}
 
-	protected abstract View createLoadedView();
-
-	protected abstract LoadingPager.LoadResult Load();
-
-	// 展示具体的页面
-	public void show() {
-		if (null != mContentView) {
-			mContentView.show();
+	//添加fragment
+	protected void addFragment(BaseFragment fragment) {
+		if (null != fragment) {
+			getHoldingActivity().addFragment(fragment);
 		}
 	}
 
-	// 检查服务器返回的数据情况
-	protected LoadingPager.LoadResult check(Object obj) {
-		if (null == obj) {
-			return LoadingPager.LoadResult.ERROR;
-		}
-		if (obj instanceof List) {
-			List list = (List) obj;
-			if (list.size() == 0) {
-				return LoadingPager.LoadResult.EMPTY;
-			}
-		}
-		return LoadingPager.LoadResult.SUCCESS;
+	//移除fragment
+	protected void removeFragment() {
+		getHoldingActivity().removeFragment();
+	}
+
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View view = inflater.inflate(getLayoutId(), container, false);
+		initView(view, savedInstanceState);
+		return view;
 	}
 }

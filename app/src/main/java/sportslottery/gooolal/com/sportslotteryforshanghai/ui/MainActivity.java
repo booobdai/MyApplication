@@ -1,36 +1,35 @@
 package sportslottery.gooolal.com.sportslotteryforshanghai.ui;
 
-import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.flyco.tablayout.CommonTabLayout;
-import com.flyco.tablayout.listener.CustomTabEntity;
-import com.flyco.tablayout.listener.OnTabSelectListener;
-import com.orhanobut.logger.Logger;
+import com.bumptech.glide.Glide;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsDrawable;
+import com.mikepenz.materialdrawer.AccountHeader;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import sportslottery.gooolal.com.sportslotteryforshanghai.Base.BaseActivity;
-import sportslottery.gooolal.com.sportslotteryforshanghai.Base.BaseFragment;
-import sportslottery.gooolal.com.sportslotteryforshanghai.Base.FragmentFactory;
 import sportslottery.gooolal.com.sportslotteryforshanghai.R;
-import sportslottery.gooolal.com.sportslotteryforshanghai.entity.TabEntity;
-import sportslottery.gooolal.com.sportslotteryforshanghai.ui.view.LazyViewPager;
 
 /**
  * ================================================
@@ -43,164 +42,82 @@ import sportslottery.gooolal.com.sportslotteryforshanghai.ui.view.LazyViewPager;
  */
 public class MainActivity extends BaseActivity {
 
-    @BindView(R.id.titlebar_back_ll)
-    LinearLayout titlebarBackLl;
-    @BindView(R.id.titlebar_tv)
-    TextView titlebarTv;
-    @BindView(R.id.filtrate_tv)
-    ImageView filtrateTv;
-    @BindView(R.id.base_titleBar)
-    RelativeLayout baseTitleBar;
-    @BindView(R.id.tabs)
-    CommonTabLayout mCommonTabLayout;
-    @BindView(R.id.pager)
-    ViewPager pager;
-   /* @BindView(R.id.pager)
-    LazyViewPager pager;*/
 
-    private ViewPageAdapeter adapter;
+    @BindView(R.id.backdrop)
+    ImageView backdrop;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.collapsing_toolbar)
+    CollapsingToolbarLayout collapsingToolbar;
+    @BindView(R.id.appbar)
+    AppBarLayout appbar;
+    @BindView(R.id.floating_action_button)
+    FloatingActionButton floatingActionButton;
+    @BindView(R.id.main_content)
+    CoordinatorLayout mainContent;
+    private AccountHeader headerResult;
+    private Drawer result;
 
-    private String[] mTitles = new String[5];
-    private int[] mIconUnselectIds = {
-            R.mipmap.tab_home_unselect, R.mipmap.tab_speech_unselect,
-            R.mipmap.tab_contact_unselect, R.mipmap.tab_more_unselect, R.mipmap.tab_more_unselect};
-    private int[] mIconSelectIds = {
-            R.mipmap.tab_home_select, R.mipmap.tab_speech_select,
-            R.mipmap.tab_contact_select, R.mipmap.tab_more_select, R.mipmap.tab_more_select};
-    private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
-
-    
-    @Override
-    protected void initView() {
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-       /* mCommonTabLayout = (CommonTabLayout) findViewById(R.id.tabs);
-        pager = (LazyViewPager) findViewById(R.id.pager);*/
-        Resources res = this.getResources();
-
-        mTitles = res.getStringArray(R.array.tab_names);
-        for (int i = 0; i < mTitles.length; i++) {
-            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
-        }
-        adapter = new ViewPageAdapeter(getSupportFragmentManager());
-        // 设置数据
-        pager.setAdapter(adapter);
-
-        titlebarBackLl.setVisibility(View.INVISIBLE);
-        titlebarTv.setText("测试svn");
-        bindSelect();
-    }
 
     @Override
-    protected void init() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_collapsing_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbarLayout.setTitle(getString(R.string.drawer_item_collapsing_toolbar_drawer));
+
+        headerResult = new AccountHeaderBuilder()
+                .withActivity(this)
+                .withCompactStyle(false)
+                .withHeaderBackground(R.drawable.header)
+                .withSavedInstance(savedInstanceState)
+                .build();
+
+        result = new DrawerBuilder()
+                .withActivity(this)
+                .withAccountHeader(headerResult)
+                .withToolbar(toolbar)
+                .withFullscreen(true)
+                .addDrawerItems(
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_home).withIcon(FontAwesome.Icon.faw_home).withIdentifier(1),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_free_play).withIcon(FontAwesome.Icon.faw_gamepad),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_custom).withIcon(FontAwesome.Icon.faw_eye),
+                        new SectionDrawerItem().withName(R.string.drawer_item_section_header),
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_settings).withIcon(FontAwesome.Icon.faw_cog),
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_help).withIcon(FontAwesome.Icon.faw_question).withEnabled(false),
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_open_source).withIcon(FontAwesome.Icon.faw_github),
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_contact).withIcon(FontAwesome.Icon.faw_bullhorn)
+                )
+                .withSavedInstance(savedInstanceState)
+                .build();
+
+
+//        fillFab();
+//        loadBackdrop();
     }
 
-    /**
-     * 将viewpager和下面的tab绑定在一起
-     */
-    private void bindSelect() {
-        mCommonTabLayout.setTabData(mTabEntities);
-
-        mCommonTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
-            @Override
-            public void onTabSelect(int position) {
-                pager.setCurrentItem(position,false);
-            }
-
-            @Override
-            public void onTabReselect(int position) {
-                pager.setCurrentItem(position,false);
-            }
-
-
-        });
-
-        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-
-            }
-
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                mCommonTabLayout.setCurrentTab(position);
-                BaseFragment fragment = FragmentFactory.createFragment(position);
-                titlebarTv.setText(mTitles[position]);
-                fragment.show();
-            }
-        });
-
+    private void loadBackdrop() {
+        final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
+        Glide.with(this).load("http://pic.sogou.com/pics/recompic/detail.jsp?category=汽车&tag=跑车#2%2612631568").centerCrop().into(imageView);
     }
-  /**
-     * 将viewpager和下面的tab绑定在一起
-     */
-    /*private void bindSelect() {
-        mCommonTabLayout.setTabData(mTabEntities);
 
-        mCommonTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
-            @Override
-            public void onTabSelect(int position) {
-                pager.setCurrentItem(position);
-            }
-
-            @Override
-            public void onTabReselect(int position) {
-                pager.setCurrentItem(position);
-            }
-
-
-        });
-
-        pager.setOnPageChangeListener(new LazyViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-
-            }
-
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                mCommonTabLayout.setCurrentTab(position);
-                BaseFragment fragment = FragmentFactory.createFragment(position);
-                fragment.show();
-            }
-        });
-
-    }*/
-
-
-    private class ViewPageAdapeter extends FragmentStatePagerAdapter {
-
-
-        public ViewPageAdapeter(FragmentManager fm) {
-            super(fm);
-        }
-
-        // 获取到title
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mTitles[position];
-
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return FragmentFactory.createFragment(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mTitles.length;
-        }
+    private void fillFab() {
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floating_action_button);
+        fab.setImageDrawable(new IconicsDrawable(this, GoogleMaterial.Icon.gmd_favorite).actionBar().color(Color.WHITE));
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        //add the values which need to be saved from the drawer to the bundle
+        outState = result.saveInstanceState(outState);
+        //add the values which need to be saved from the accountHeader to the bundle
+        outState = headerResult.saveInstanceState(outState);
+        super.onSaveInstanceState(outState);
+    }
+
     /**
      * 菜单、返回键响应
      */

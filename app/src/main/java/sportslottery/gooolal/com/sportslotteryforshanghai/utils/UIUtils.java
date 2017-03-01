@@ -19,7 +19,7 @@ import android.widget.Toast;
  * 修订历史：
  * ================================================
  */
-import sportslottery.gooolal.com.sportslotteryforshanghai.Base.BaseActivity;
+import sportslottery.gooolal.com.sportslotteryforshanghai.Base.BaseFragmentActivity;
 import sportslottery.gooolal.com.sportslotteryforshanghai.aplication.BaseApplication;
 
 
@@ -122,7 +122,7 @@ public class UIUtils {
 	}
 
 	public static void startActivity(Intent intent) {
-		BaseActivity activity = (BaseActivity) BaseActivity
+		BaseFragmentActivity activity = (BaseFragmentActivity) BaseFragmentActivity
 				.getForegroundActivity();
 		if (activity != null) {
 			activity.startActivity(intent);
@@ -152,7 +152,7 @@ public class UIUtils {
 	}
 
 	private static void showToast(String str) {
-		BaseActivity frontActivity = (BaseActivity) BaseActivity
+		BaseFragmentActivity frontActivity = (BaseFragmentActivity) BaseFragmentActivity
 				.getForegroundActivity();
 		if (frontActivity != null) {
 			Toast.makeText(frontActivity, str, Toast.LENGTH_LONG).show();
