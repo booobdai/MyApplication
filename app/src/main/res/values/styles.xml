@@ -63,4 +63,13 @@
             @color/material_drawer_header_selection_text
         </item>
     </style>
+
+    <!--传统页面线性布局的style-->
+    <style name="Tranditional_LLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/dp_size_8dp</item>
+        <item name="android:layout_marginRight">@dimen/dp_size_8dp</item>
+        <item name="android:background">@drawable/whitein_coner_black_shape</item>
+    </style>
 </resources>

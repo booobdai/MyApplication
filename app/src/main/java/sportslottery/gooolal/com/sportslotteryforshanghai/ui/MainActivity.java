@@ -1,5 +1,6 @@
 package sportslottery.gooolal.com.sportslotteryforshanghai.ui;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -8,6 +9,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -22,14 +24,15 @@ import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import sportslottery.gooolal.com.sportslotteryforshanghai.Base.BaseActivity;
 import sportslottery.gooolal.com.sportslotteryforshanghai.R;
+import sportslottery.gooolal.com.sportslotteryforshanghai.ui.activity.TraditionalDiaryActivity;
 
 /**
  * ================================================
@@ -40,7 +43,7 @@ import sportslottery.gooolal.com.sportslotteryforshanghai.R;
  * 修订历史：
  * ================================================
  */
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity  {
 
 
     @BindView(R.id.backdrop)
@@ -82,7 +85,14 @@ public class MainActivity extends BaseActivity {
                 .withToolbar(toolbar)
                 .withFullscreen(true)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_home).withIcon(FontAwesome.Icon.faw_home).withIdentifier(1),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_home).withIcon(FontAwesome.Icon.faw_home).withIdentifier(1).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                            @Override
+                            public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                                Intent intent=new Intent(MainActivity.this,TraditionalDiaryActivity.class);
+                                startActivity(intent);
+                                return false;
+                            }
+                        }),
                         new PrimaryDrawerItem().withName(R.string.drawer_item_free_play).withIcon(FontAwesome.Icon.faw_gamepad),
                         new PrimaryDrawerItem().withName(R.string.drawer_item_custom).withIcon(FontAwesome.Icon.faw_eye),
                         new SectionDrawerItem().withName(R.string.drawer_item_section_header),
@@ -95,13 +105,13 @@ public class MainActivity extends BaseActivity {
                 .build();
 
 
-//        fillFab();
-//        loadBackdrop();
+        fillFab();
+        loadBackdrop();
     }
 
     private void loadBackdrop() {
-        final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
-        Glide.with(this).load("http://pic.sogou.com/pics/recompic/detail.jsp?category=汽车&tag=跑车#2%2612631568").centerCrop().into(imageView);
+        final ImageView imageView = (ImageView) findViewById(R.id.backdrop);//
+        Glide.with(this).load("https://baike.baidu.com/pic/图片/372416/0/29381f30e924b899c83ff41c6d061d950a7bf697?fr=lemma&ct=single#aid=958634&pic=148f28d3be246c5f3af3cfda").centerCrop().into(imageView);
     }
 
     private void fillFab() {

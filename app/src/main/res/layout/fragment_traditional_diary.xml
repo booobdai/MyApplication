@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!-- As our statusBar is transparent below and content is moved behind our toolbar has to include the padding on top so we use this area -->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/material_drawer_primary"
+        app:layout_collapseMode="pin"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/Tranditional_LLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_size_8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="时间"
+                    android:textColor="@color/primary"
+                    android:textSize="@dimen/text_small" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_black" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/day_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="5"
+                    android:gravity="center"
+                    android:hint="@string/shigongriqi"
+                    android:text="2017年03月02日"
+                    android:textColor="@color/primary"
+                    android:textSize="@dimen/text_small" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_black" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="名称"
+                    android:textColor="@color/primary"
+                    android:textSize="@dimen/text_small" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_black" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/project_name_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:gravity="center"
+                    android:hint="@string/shigongriqi"
+                    android:text="上海青松城大酒店"
+                    android:textSize="@dimen/text_small"
+                    app:met_hideUnderline="true"
+                    app:met_textColor="@color/primary"
+                    app:met_textColorHint="@color/black_gray" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Tranditional_LLayout"
+                android:layout_marginTop="-1dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="第\n一\n天"
+                    android:textColor="@color/primary" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_black" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginTop="1dp" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/diary_content_edt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:hint="@string/shigongriqi"
+                    android:minLines="10"
+                    android:text="上海青松城大酒店"
+                    android:textSize="@dimen/text_small"
+                    app:met_hideUnderline="true"
+                    app:met_textColor="@color/primary"
+                    app:met_textColorHint="@color/black_gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Tranditional_LLayout"
+                android:layout_marginTop="-1dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="第\n二\n天"
+                    android:textColor="@color/primary" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_black" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginTop="1dp" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/diary_zongjie_edt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:hint="@string/shigongriqi"
+                    android:minLines="10"
+                    android:text="上海青松城大酒店"
+                    android:textSize="@dimen/text_small"
+                    app:met_hideUnderline="true"
+                    app:met_textColor="@color/primary"
+                    app:met_textColorHint="@color/black_gray" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>
