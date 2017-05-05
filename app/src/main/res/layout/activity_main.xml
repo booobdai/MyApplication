@@ -40,7 +40,7 @@
         android:layout_below="@+id/base_titleBar"
         tools:context=".MainActivity" />
 
-    <!--<sportslottery.gooolal.com.sportslotteryforshanghai.ui.view.LazyViewPager
+    <!--<booobdaii.com.sportslotteryforshanghai.ui.view.LazyViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

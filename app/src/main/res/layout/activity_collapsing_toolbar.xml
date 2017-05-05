@@ -169,6 +169,7 @@
         android:id="@+id/floating_action_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:rippleColor="@color/primary"
         android:layout_margin="16dp"
         android:clickable="true"
         app:layout_anchor="@id/appbar"

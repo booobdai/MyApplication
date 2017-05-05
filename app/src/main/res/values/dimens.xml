@@ -59,7 +59,7 @@
     <dimen name="sp_size_21sp_T21">21.0sp</dimen>
 
     <dimen name="text_little">10.0sp</dimen>
-    <dimen name="text_small">12.0sp</dimen>
+    <dimen name="text_small">14.0sp</dimen>
     <dimen name="text_standard">15.0sp</dimen>
     <dimen name="text_big">17.0sp</dimen>
 

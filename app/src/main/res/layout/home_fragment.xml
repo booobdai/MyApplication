@@ -70,7 +70,7 @@
                     android:paddingTop="5dp"
                     android:src="@mipmap/ic_launcher" />
 
-                <sportslottery.gooolal.com.sportslotteryforshanghai.ui.view.MarqueeView.MarqueeView
+                <learningandroid.booobdai.com.constructiondiary.ui.view.MarqueeView.MarqueeView
                     android:id="@+id/homenotice_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
             </LinearLayout>
 
 
-            <sportslottery.gooolal.com.sportslotteryforshanghai.ui.view.GridViewWithoutScroll
+            <learningandroid.booobdai.com.constructiondiary.ui.view.GridViewWithoutScroll
                 android:id="@+id/home_gridview"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

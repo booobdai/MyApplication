@@ -9,8 +9,8 @@
 
 
     <color name="white">#FFFFFFFF</color>
-    <color name="light_gray">#e4e4e4</color>
-    <color name="black_gray">#ff919090</color>
+    <color name="light_gray">#F5F5F5</color>
+    <color name="black_gray">#ff939393</color>
 
     <color name="bg_tab_pressed">#6633b5e5</color>
     <color name="bg_tab_pressed2">#ff3898ff</color> <!-- 蓝色 -->

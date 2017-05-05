@@ -83,11 +83,12 @@
                         android:background="@color/color_gray" />
 
                     <com.rengwuxian.materialedittext.MaterialEditText
-                        android:id="@+id/project_name_tv"
+                        android:id="@+id/project_name_edt"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="5"
                         android:gravity="center"
+                        android:textCursorDrawable="@drawable/color_cursor"
                         android:hint="项目名称"
                         android:textSize="@dimen/text_small"
                         app:met_hideUnderline="true"
@@ -130,7 +131,7 @@
 
 
                         <com.rengwuxian.materialedittext.MaterialEditText
-                            android:id="@+id/morning_weather_tv"
+                            android:id="@+id/morning_weather_edt"
                             style="@style/Tranditional_Editext"
                             android:hint="上午天气"
                             app:met_hideUnderline="true"
@@ -143,7 +144,7 @@
                             android:background="@color/color_gray" />
 
                         <com.rengwuxian.materialedittext.MaterialEditText
-                            android:id="@+id/afternoon_weather_tv"
+                            android:id="@+id/afternoon_weather_edt"
                             style="@style/Tranditional_Editext"
                             android:hint="下午天气"
                             app:met_hideUnderline="true"
@@ -181,7 +182,7 @@
 
 
                         <com.rengwuxian.materialedittext.MaterialEditText
-                            android:id="@+id/morning_temperature_tv"
+                            android:id="@+id/morning_temperature_edt"
                             style="@style/Tranditional_Editext"
                             android:hint="上午温度"
                             app:met_hideUnderline="true"
@@ -194,7 +195,7 @@
                             android:background="@color/color_gray" />
 
                         <com.rengwuxian.materialedittext.MaterialEditText
-                            android:id="@+id/afternoon_temperature_tv"
+                            android:id="@+id/afternoon_temperature_edt"
                             style="@style/Tranditional_Editext"
                             android:hint="下午温度"
                             app:met_hideUnderline="true"
@@ -243,6 +244,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="6"
                         android:gravity="top|start"
+                        android:textCursorDrawable="@drawable/color_cursor"
                         android:hint="生产情况记录"
                         android:lineSpacingMultiplier="1.2"
                         android:minLines="10"
@@ -288,6 +290,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="6"
                         android:gravity="top|start"
+                        android:textCursorDrawable="@drawable/color_cursor"
                         android:hint="技术安全工作记录"
                         android:lineSpacingMultiplier="1.2"
                         android:minLines="10"
@@ -321,7 +324,7 @@
                         android:textSize="@dimen/text_big" />
 
                     <com.rengwuxian.materialedittext.MaterialEditText
-                        android:id="@+id/author_et"
+                        android:id="@+id/author_edt"
                         style="@style/Tranditional_Editext"
                         android:hint="记录人"
                         android:layout_marginLeft="@dimen/dp_size_5dp"

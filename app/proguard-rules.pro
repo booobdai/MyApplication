@@ -81,7 +81,7 @@
  -keep class com.google.gson.stream.** { *; }
  # 使用Gson时需要配置Gson的解析对象及变量都不混淆。不然Gson会找不到变量。
  # 将下面替换成自己的实体类
- -keep class sportslottery.gooolal.com.sportslotteryforshanghai.bean.** { *; }
+ -keep class booobdai.com.sportslotteryforshanghai.bean.** { *; }
  # ButterKnife
  -keep class butterknife.** { *; }
  -dontwarn butterknife.internal.**
@@ -104,3 +104,13 @@
  # Picasso
   -keep class com.squareup.picasso.**{*;}
 
+#greendao
+-keepclassmembers class * extends org.greenrobot.greendao.AbstractDao {
+public static java.lang.String TABLENAME;
+}
+-keep class **$Properties
+
+# If you do not use SQLCipher:
+-dontwarn org.greenrobot.greendao.database.**
+# If you do not use Rx:
+-dontwarn rx.**

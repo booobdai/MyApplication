@@ -1,26 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="sportslottery.gooolal.com.sportslotteryforshanghai">
+    package="learningandroid.booobdai.com.constructiondiary">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:name=".aplication.BaseApplication"
+        android:name="learningandroid.booobdai.com.constructiondiary.aplication.BaseApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_note"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar">
-        <activity android:name=".ui.MainActivity">
+        <activity android:name="learningandroid.booobdai.com.constructiondiary.ui.MainActivity"
+            android:launchMode="singleTask"
+            >
+
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        </activity>
+        <activity android:name="learningandroid.booobdai.com.constructiondiary.ui.activity.TraditionalDiaryActivity" />
+
+        <activity android:name=".ui.activity.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         </activity>
-        <activity android:name=".ui.activity.TraditionalDiaryActivity" />
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="58bf67e89f06fd548c002232" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="xiaomi" />
     </application>
 
 </manifest>
