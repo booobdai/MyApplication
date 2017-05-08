@@ -1,4 +1,4 @@
-package learningandroid.booobdai.com.constructiondiary.ui;
+package learningandroid.booobdai.com.constructiondiary.ui.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -7,6 +7,8 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -15,7 +17,6 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
@@ -31,6 +32,7 @@ import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.SwitchDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.Nameable;
+import com.orhanobut.logger.Logger;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -38,7 +40,8 @@ import java.util.TimerTask;
 import butterknife.BindView;
 import learningandroid.booobdai.com.constructiondiary.Base.BaseActivity;
 import learningandroid.booobdai.com.constructiondiary.R;
-import learningandroid.booobdai.com.constructiondiary.ui.activity.TraditionalDiaryActivity;
+import learningandroid.booobdai.com.constructiondiary.ui.adapter.GlideImageLoader;
+import learningandroid.booobdai.com.constructiondiary.ui.adapter.MainAcAdapter;
 
 /**
  * ================================================
@@ -62,8 +65,12 @@ public class MainActivity extends BaseActivity {
     AppBarLayout appbar;
     @BindView(R.id.floating_action_button)
     FloatingActionButton floatingActionButton;
+    @BindView(R.id.floating_bottom_button)
+    FloatingActionButton floatingBottomButton;//写
     @BindView(R.id.main_content)
     CoordinatorLayout mainContent;
+    @BindView(R.id.main_recycleview)
+    RecyclerView mainRecyclerView;
     private AccountHeader headerResult;
     private Drawer result;
 
@@ -75,9 +82,16 @@ public class MainActivity extends BaseActivity {
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        MainAcAdapter mainAcAdapter = new MainAcAdapter(this);
+
+        mainRecyclerView.setLayoutManager(new LinearLayoutManager(this));//这里用线性显示 类似于listview
+//        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));//这里用线性宫格显示 类似于grid view
+//        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));//这里用线性宫格显示 类似于瀑布流
+
+
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(getString(R.string.drawer_item_collapsing_toolbar_drawer));
-
+        mainRecyclerView.setAdapter(mainAcAdapter);
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withCompactStyle(false)
@@ -134,13 +148,18 @@ public class MainActivity extends BaseActivity {
 
     private void loadBackdrop() {
 //        final ImageView imageView = (ImageView) findViewById(R.id.backdrop);//
-        Glide.with(this).load("https://baike.baidu.com/pic/图片/372416/0/29381f30e924b899c83ff41c6d061d950a7bf697?fr=lemma&ct=single#aid=958634&pic=148f28d3be246c5f3af3cfda").centerCrop().into(backdrop);
+        Logger.e("加载图片");
+//        backdrop.setImageResource(R.drawable.header);
+        new GlideImageLoader().displayImage(this, "http://www.sinaimg.cn/dy/slidenews/1_img/2017_17/63957_890134_720151.jpg", backdrop);
+//        Picasso.with(this).load("http://www.sinaimg.cn/dy/slidenews/1_img/2017_17/63957_890134_720151.jpg").into(backdrop);
     }
 
     private void fillFab() {
-        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floating_action_button);
-        fab.setImageDrawable(new IconicsDrawable(this, GoogleMaterial.Icon.gmd_file_add).actionBar().color(Color.WHITE));
-        fab.setOnClickListener(new View.OnClickListener() {
+//        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floating_action_button);
+        floatingActionButton.setImageDrawable(new IconicsDrawable(this, GoogleMaterial.Icon.gmd_codepen).actionBar().color(Color.WHITE));
+
+        floatingBottomButton.setImageResource(R.mipmap.pen);
+        floatingBottomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TraditionalDiaryActivity.class);
