@@ -7,7 +7,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import learningandroid.booobdai.com.constructiondiary.Base.BaseActivity;
 import learningandroid.booobdai.com.constructiondiary.R;
-import learningandroid.booobdai.com.constructiondiary.ui.MainActivity;
 import me.wangyuwei.particleview.ParticleView;
 
 
@@ -25,11 +24,11 @@ public class SplashActivity extends BaseActivity {
 
     @BindView(R.id.pv_1)
     ParticleView pv1;
-    @BindView(R.id.pv_2)
+  /*  @BindView(R.id.pv_2)
     ParticleView pv2;
     @BindView(R.id.pv_3)
     ParticleView pv3;
-    @BindView(R.id.pv_4)
+    @BindView(R.id.pv_4)*/
     ParticleView pv4;
 
     @Override

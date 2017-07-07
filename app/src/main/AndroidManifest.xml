@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar">
-        <activity android:name="learningandroid.booobdai.com.constructiondiary.ui.MainActivity"
+        <activity android:name="learningandroid.booobdai.com.constructiondiary.ui.activity.MainActivity"
             android:launchMode="singleTask"
             >
 

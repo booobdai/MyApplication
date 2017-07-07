@@ -12,18 +12,26 @@
         <item>用户</item>
     </string-array>
 
-    <string-array name="homegridviewitem">
-        <item>开奖</item>
-        <item>购彩通</item>
-        <item>比分</item>
-        <item>推荐</item>
-        <item>活动</item>
-        <item>超G竞彩</item>
-        <item>网点</item>
-        <item>客服</item>
+    <string-array name="weather_names">
+        <item>晴</item>
+        <item>多云</item>
+        <item>阴</item>
+        <item>小雨</item>
+        <item>中雨</item>
+        <item>大雨</item>
+        <item>暴雨</item>
+        <item>阵雨</item>
+        <item>雷阵雨</item>
+        <item>冰雹</item>
+        <item>雾</item>
+        <item>雨夹雪</item>
+        <item>小雪</item>
+        <item>中雪</item>
+        <item>大雪</item>
+        <item>台风</item>
     </string-array>
 
-  <!--  模拟数据-->
+    <!--  模拟数据-->
     <string-array name="viewpagertitle">
         <item>哎哟,这妹子不错哦</item>
         <item>哇,这个也行啊  </item>

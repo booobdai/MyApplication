@@ -10,9 +10,6 @@ import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.cookie.store.PersistentCookieStore;
 import com.umeng.analytics.MobclickAgent;
 
-import learningandroid.booobdai.com.constructiondiary.dao.AbstractDatabaseManager;
-import learningandroid.booobdai.com.constructiondiary.dao.GreenDaoManager;
-
 /**
  * ================================================
  * 作    者：booob
@@ -41,23 +38,18 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         this.mContext = this;
-        this.mMainThreadHandler = new Handler();
-        this.mMainThread = Thread.currentThread();
         this.mMainThreadId = android.os.Process.myTid();
         this.mMainThreadLooper = getMainLooper();
         MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType.E_UM_NORMAL);
         //必须调用初始化
         OkGo.init(this);
 
-//        GreenDaoManager.getInstance();//全局配置数据库
-        AbstractDatabaseManager.initOpenHelper(getApplicationContext());//初始化数据库
 
         //以下设置的所有参数是全局参数,同样的参数可以在请求的时候再设置一遍,那么对于该请求来讲,请求中的参数会覆盖全局参数
         //好处是全局参数统一,特定请求可以特别定制参数
         try {
             //以下都不是必须的，根据需要自行选择,一般来说只需要 debug,缓存相关,cookie相关的 就可以了
             OkGo.getInstance()
-
                     //打开该调试开关,控制台会使用 红色error 级别打印log,并不是错误,是为了显眼,不需要就不要加入该行
                     .debug("OkGo")
 
