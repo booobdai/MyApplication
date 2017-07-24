@@ -22,21 +22,23 @@
             android:paddingTop="24dp">
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/main_diarytime_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Related"
+                android:textSize="@dimen/sp_size_15sp_T15"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
             <TextView
-                android:id="@+id/content"
+                android:id="@+id/diary_content_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lineSpacingMultiplier="1.2"
-                android:maxLines="8"
+                android:maxLines="6"
+                android:textSize="@dimen/sp_size_13sp_T13"
                 android:ellipsize="end"
                 android:marqueeRepeatLimit="marquee_forever"
-                android:text="@string/lorem_ipsum" />
+               />
 
         </LinearLayout>
 

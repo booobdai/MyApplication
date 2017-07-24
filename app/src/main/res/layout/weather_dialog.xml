@@ -8,17 +8,25 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_size_10dp"
         android:layout_marginTop="@dimen/dp_size_20dp"
         android:gravity="center"
         android:text="天气列表"
         android:textColor="@color/color_black"
         android:textSize="@dimen/sp_size_18sp_T18"></TextView>
 
-    <learningandroid.booobdai.com.constructiondiary.ui.view.GridViewWithoutScroll
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/color_black" />
+
+    <GridView
         android:id="@+id/gridview_weather"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:horizontalSpacing="@dimen/dp_size_3dp"
         android:numColumns="4"
+        android:padding="@dimen/dp_size_6dp"
         android:stretchMode="columnWidth"
         android:verticalSpacing="3dp" />
 

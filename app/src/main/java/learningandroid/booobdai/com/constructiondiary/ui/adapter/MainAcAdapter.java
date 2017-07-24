@@ -30,8 +30,8 @@ public class MainAcAdapter extends RecyclerView.Adapter<MainAcAdapter.MainViewHo
     private Context mContext;
     private List<DiaryBean> diaryBeanList;
 
-    public MainAcAdapter(Context mContext,List<DiaryBean> diaryBeanList) {
-        this.diaryBeanList=diaryBeanList;
+    public MainAcAdapter(Context mContext, List<DiaryBean> diaryBeanList) {
+        this.diaryBeanList = diaryBeanList;
         this.mContext = mContext;
         this.mLayoutInflater = LayoutInflater.from(mContext);
     }
@@ -44,7 +44,9 @@ public class MainAcAdapter extends RecyclerView.Adapter<MainAcAdapter.MainViewHo
 
     @Override
     public void onBindViewHolder(MainViewHolder holder, int position) {
-        if (position % 2 == 0) {
+        holder.mainDiarytimeTv.setText(diaryBeanList.get(position).getRecordTime());
+        holder.diaryContentTv.setText(diaryBeanList.get(position).getDiaryContent());
+        /*if (position % 2 == 0) {
             holder.title.setText("振奋人心！\n");
             holder.content.setText(
                     "刚刚，微信支付正式宣布：进军美国！\n" +
@@ -63,28 +65,27 @@ public class MainAcAdapter extends RecyclerView.Adapter<MainAcAdapter.MainViewHo
                     "在这场交流会中，不时的讲到动情之处，中间雷军哽咽了几次，原话是：“万一哪天小米活不下去了，我们就发起募捐，我相信米粉朋友们一定会给我们捐款的，我相信他们会心甘情愿的。”\n" +
                     "\n" +
                     "“因为我们是真正在全心全意为米粉服务，为了给他们提供最酷的产品，为了能以最厚道的价格让米粉们都买得起，七年来我每天都过得非常焦虑，我付出了全部的热情。”");
-        }
+        }*/
     }
 
     @Override
     public int getItemCount() {
-        if (diaryBeanList==null){
+        if (diaryBeanList == null) {
             return 0;
         }
         return diaryBeanList.size();
     }
 
     class MainViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.content)
-        TextView content;
-        @BindView(R.id.title)
-        TextView title;
+        @BindView(R.id.main_diarytime_tv)
+        TextView mainDiarytimeTv;
+        @BindView(R.id.diary_content_tv)
+        TextView diaryContentTv;
 
         MainViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
     }
-
 
 }

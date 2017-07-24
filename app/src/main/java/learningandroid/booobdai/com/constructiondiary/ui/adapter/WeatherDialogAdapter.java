@@ -24,7 +24,7 @@ import learningandroid.booobdai.com.constructiondiary.aplication.BaseApplication
 
 public class WeatherDialogAdapter extends BaseAdapter {
 
-    private int[] weatherIds = {R.mipmap.weather_sunny, R.mipmap.weather_cloudy, R.mipmap.weather_overcast, R.mipmap.weather_light_rain, R.mipmap.weather_moderate_rain, R.mipmap.weather_heavy_rain, R.mipmap.weather_torrential_rain, R.mipmap.weather_shower, R.mipmap.weather_thunder_shower, R.mipmap.weather_hail, R.mipmap.weather_fog, R.mipmap.weather_sleet, R.mipmap.weather_light_snow, R.mipmap.weather_moderate_snow, R.mipmap.weather_heavy_snow, R.mipmap.weather_force_vind, R.mipmap.weather_sunny,};
+    private int[] weatherIds = {R.mipmap.weather_sunny, R.mipmap.weather_cloudy, R.mipmap.weather_overcast, R.mipmap.weather_light_rain, R.mipmap.weather_moderate_rain, R.mipmap.weather_heavy_rain, R.mipmap.weather_torrential_rain, R.mipmap.weather_shower, R.mipmap.weather_thunder_shower, R.mipmap.weather_hail, R.mipmap.weather_fog, R.mipmap.weather_sleet, R.mipmap.weather_light_snow, R.mipmap.weather_moderate_snow, R.mipmap.weather_heavy_snow, R.mipmap.weather_force_vind};
     private String[] weatherNames = BaseApplication.getApplication().getResources().getStringArray(R.array.weather_names);
 
     @Override
@@ -45,17 +45,17 @@ public class WeatherDialogAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder=null;
+        ViewHolder viewHolder = null;
         if (convertView == null) {
             convertView = LayoutInflater.from(BaseApplication.getApplication()).inflate(R.layout.weather_gridview_item, null);
-            viewHolder=new ViewHolder(convertView);
+            viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
-        }else {
-            viewHolder= (ViewHolder) convertView.getTag();
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.weatherIm.setImageResource(weatherIds[position]);
         viewHolder.weatherTv.setText(weatherNames[position]);
-        return null;
+        return convertView;
     }
 
     static class ViewHolder {

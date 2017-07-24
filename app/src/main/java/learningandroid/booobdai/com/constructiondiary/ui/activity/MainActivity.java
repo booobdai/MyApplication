@@ -103,29 +103,34 @@ public class MainActivity extends BaseActivity {
         pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-            AsyncTaskUtils.doAsync(new IDataCallBack<Object>() {
-                @Override
-                public void onTaskBefore() {
-                    pullToRefresh.setRefreshing(true);
-                    diaryBeanList = diaryDaoUtils.queryAllDiaryBean();
-                }
-
-                @Override
-                public Object onTasking(Void... params) {
-                    return null;
-                }
-
-                @Override
-                public void onTaskAfter(Object result) {
-                    pullToRefresh.setRefreshing(false);
-                    if (mainAcAdapter != null) {
-                        mainAcAdapter.notifyDataSetChanged();
-                    } else {
-                        mainAcAdapter = new MainAcAdapter(MainActivity.this, diaryBeanList);
-                        mainRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));//这里用线性显示 类似于listview
+                AsyncTaskUtils.doAsync(new IDataCallBack<Object>() {
+                    @Override
+                    public void onTaskBefore() {
+                        pullToRefresh.setRefreshing(true);
+                        if (diaryDaoUtils.queryAllDiaryBean() != null && (diaryDaoUtils.queryAllDiaryBean().size() > 0)) {
+                            diaryBeanList.clear();
+                            diaryBeanList.addAll(diaryDaoUtils.queryAllDiaryBean());
+                        }
                     }
-                }
-            });
+
+                    @Override
+                    public Object onTasking(Void... params) {
+                        return null;
+                    }
+
+                    @Override
+                    public void onTaskAfter(Object result) {
+                        pullToRefresh.setRefreshing(false);
+                        Logger.e(diaryBeanList.size() + "diaryBeanList的长度");
+                        if (mainAcAdapter != null) {
+                            mainAcAdapter.notifyDataSetChanged();
+                        } else {
+                            mainAcAdapter = new MainAcAdapter(MainActivity.this, diaryBeanList);
+                            mainRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));//这里用线性显示 类似于listview
+                            mainRecyclerView.setAdapter(mainAcAdapter);
+                        }
+                    }
+                });
             }
         });
         if (diaryBeanList == null)
@@ -137,13 +142,9 @@ public class MainActivity extends BaseActivity {
         diaryBeanList = diaryDaoUtils.queryAllDiaryBean();
         Logger.e(diaryBeanList.size() + "MainActivity");
 
-        mainAcAdapter = new
+        mainAcAdapter = new MainAcAdapter(this, diaryBeanList);
 
-                MainAcAdapter(this, diaryBeanList);
-
-        mainRecyclerView.setLayoutManager(new
-
-                LinearLayoutManager(this));//这里用线性显示 类似于listview
+        mainRecyclerView.setLayoutManager(new LinearLayoutManager(this));//这里用线性显示 类似于listview
 //        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));//这里用线性宫格显示 类似于grid view
 //        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));//这里用线性宫格显示 类似于瀑布流
 
@@ -191,13 +192,9 @@ public class MainActivity extends BaseActivity {
 
                         addDrawerItems(
                                 new PrimaryDrawerItem().
-
                                         withName(R.string.drawer_item_home).
-
                                         withIcon(FontAwesome.Icon.faw_home).
-
                                         withIdentifier(1).
-
                                         withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                                             @Override
                                             public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {//点击主页的时间
@@ -206,80 +203,30 @@ public class MainActivity extends BaseActivity {
                                                 return false;
                                             }
                                         }),
-                                new
-
-                                        SwitchDrawerItem().
-
-                                        withName(R.string.drawer_item_free_play).
-
-                                        withCheckable(true).
-
+                                new SwitchDrawerItem().withName(R.string.drawer_item_free_play).withCheckable(true).
                                         withIcon(FontAwesome.Icon.faw_gamepad).
-
                                         withOnCheckedChangeListener(new OnCheckedChangeListener() {//开关条目,监听开关
                                             @Override
-                                            public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView,
-                                                                         boolean isChecked) {
+                                            public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
 
                                             }
                                         }),
+                                new PrimaryDrawerItem().withName(R.string.drawer_item_custom).withIcon(FontAwesome.Icon.faw_eye),
+                                new SectionDrawerItem().withName(R.string.drawer_item_section_header),
+                                new SecondaryDrawerItem().withName(R.string.drawer_item_settings).withIcon(FontAwesome.Icon.faw_cog),
+                                new SecondaryDrawerItem().withName(R.string.drawer_item_help).
+                                        withIcon(FontAwesome.Icon.faw_question).withEnabled(true),
                                 new
-
-                                        PrimaryDrawerItem().
-
-                                        withName(R.string.drawer_item_custom).
-
-                                        withIcon(FontAwesome.Icon.faw_eye),
-                                new
-
-                                        SectionDrawerItem().
-
-                                        withName(R.string.drawer_item_section_header),
-                                new
-
                                         SecondaryDrawerItem().
-
-                                        withName(R.string.drawer_item_settings).
-
-                                        withIcon(FontAwesome.Icon.faw_cog),
-                                new
-
-                                        SecondaryDrawerItem().
-
-                                        withName(R.string.drawer_item_help).
-
-                                        withIcon(FontAwesome.Icon.faw_question).
-
-                                        withEnabled(true),
-                                new
-
-                                        SecondaryDrawerItem().
-
                                         withName(R.string.drawer_item_open_source).
-
                                         withIcon(FontAwesome.Icon.faw_github),
                                 new
-
                                         SecondaryDrawerItem().
-
                                         withName(R.string.drawer_item_contact).
-
                                         withIcon(FontAwesome.Icon.faw_bullhorn),
-                                new
-
-                                        DividerDrawerItem()
-                        )
-                .
-
-                        withSavedInstance(savedInstanceState)
-                .
-
-                        build();
-
+                                new DividerDrawerItem()).withSavedInstance(savedInstanceState).build();
         fillFab();
-
         loadBackdrop();
-
     }
 
     private OnCheckedChangeListener onCheckedChangeListener = new OnCheckedChangeListener() {

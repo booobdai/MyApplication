@@ -4,11 +4,13 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import com.orhanobut.logger.Logger;
@@ -25,8 +27,8 @@ import learningandroid.booobdai.com.constructiondiary.dao.DiaryBeanDao;
 import learningandroid.booobdai.com.constructiondiary.dao.DiaryDaoUtils;
 import learningandroid.booobdai.com.constructiondiary.entity.DiaryBean;
 import learningandroid.booobdai.com.constructiondiary.ui.adapter.WeatherDialogAdapter;
-import learningandroid.booobdai.com.constructiondiary.ui.view.GridViewWithoutScroll;
 import learningandroid.booobdai.com.constructiondiary.utils.StringUtils;
+import learningandroid.booobdai.com.constructiondiary.utils.UIUtils;
 
 /**
  * ================================================
@@ -92,10 +94,19 @@ public class TraditionalDiaryActivity extends BaseActivity implements DatePicker
     private DiaryDaoUtils diaryDaoUtils;
 
     @OnClick(R.id.morning_weather_edt)
-    void weatherOnClick() {
+    void weatherOnClick1() {//上午天气选择
         Dialog dialog = new Dialog(this);
         View contentview = LayoutInflater.from(this).inflate(R.layout.weather_dialog, null);
-        GridViewWithoutScroll gridViewWithoutScroll = (GridViewWithoutScroll) contentview.findViewById(R.id.gridview_weather);
+        GridView gridViewWithoutScroll = (GridView) contentview.findViewById(R.id.gridview_weather);
+        gridViewWithoutScroll.setAdapter(new WeatherDialogAdapter());
+        dialog.setContentView(contentview);
+        dialog.show();
+    }
+    @OnClick(R.id.afternoon_weather_edt)
+    void weatherOnClick2() {//下午天气选择
+        Dialog dialog = new Dialog(this);
+        View contentview = LayoutInflater.from(this).inflate(R.layout.weather_dialog, null);
+        GridView gridViewWithoutScroll = (GridView) contentview.findViewById(R.id.gridview_weather);
         gridViewWithoutScroll.setAdapter(new WeatherDialogAdapter());
         dialog.setContentView(contentview);
         dialog.show();
@@ -112,10 +123,8 @@ public class TraditionalDiaryActivity extends BaseActivity implements DatePicker
                 showToast("保存点击了");
 
                 if (isNeedCreatedDb) {
-                    Logger.e("");
+                    Logger.e("initDiaryBean");
                     initDiaryBean();
-
-                    isNeedCreatedDb = false;
                 } else {
 
                 }
@@ -147,13 +156,45 @@ public class TraditionalDiaryActivity extends BaseActivity implements DatePicker
         page = diaryDaoUtils.queryAllDiaryBean().size();
 //        page =;//页数也是记录篇数
         entryName = initStringbyEditext(projectNameEdt);
+        if (TextUtils.isEmpty(entryName)){
+            showToast("项目名称不能为空!");
+            return;
+        }
         morningWeather = initStringbyEditext(morningWeatherEdt);
+        if (TextUtils.isEmpty(morningWeather)){
+           showToast("上午天气不能为空!");
+            return;
+        }
         afternoonWeather = initStringbyEditext(afternoonWeatherEdt);
+        if (TextUtils.isEmpty(afternoonWeather)){
+            showToast("下午天气不能为空!");
+            return;
+        }
         morningTemperature = initStringbyEditext(morningTemperatureEdt);
+        if (TextUtils.isEmpty(morningTemperature)){
+            showToast("上午温度不能为空!");
+            return;
+        }
         afternoonTemperature = initStringbyEditext(afternoonTemperatureEdt);
+        if (TextUtils.isEmpty(afternoonTemperature)){
+            showToast("下午温度不能为空!");
+            return;
+        }
         diaryContent = initStringbyEditext(diaryContentEdt);
+        if (TextUtils.isEmpty(diaryContent)){
+            showToast("日志内容不能为空!");
+            return;
+        }
         safetyRecord = initStringbyEditext(diaryZongjieEdt);
+        if (TextUtils.isEmpty(safetyRecord)){
+            showToast("安全记录不能为空不能为空!");
+            return;
+        }
         recorder = initStringbyEditext(authorEdt);
+        if (TextUtils.isEmpty(recorder)){
+            showToast("记录人不能为空!");
+            return;
+        }
 //        recordTime =;//记录时间
 //        carpenterNum;//木匠
 //        bricklayerNum;//泥水
@@ -180,6 +221,7 @@ public class TraditionalDiaryActivity extends BaseActivity implements DatePicker
 //        diaryBean.setBricklayerNum(bricklayerNum);
 //        diaryBean.setGangJinNum(gangJinNum);
         diaryDaoUtils.insertDiaryBean(diaryBean);
+        isNeedCreatedDb = false;
     }
 
     private String initStringbyEditext(MaterialEditText mEditext) {

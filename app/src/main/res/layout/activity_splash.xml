@@ -17,11 +17,11 @@
             android:layout_weight="1"
             android:background="@color/facebook_blue"
             pv:pv_host_text="TextApp"
-            pv:pv_host_text_anim_time="2000"
+            pv:pv_host_text_anim_time="1000"
             pv:pv_particle_text="By_Wenbody"
             pv:pv_particle_text_size="@dimen/sp_size_18sp_T18"
-            pv:pv_spread_anim_time="1000"
-            pv:pv_text_anim_time="2000"
+            pv:pv_spread_anim_time="500"
+            pv:pv_text_anim_time="1000"
             pv:pv_text_color="@color/white" />
 
     </LinearLayout>
